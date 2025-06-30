@@ -41,7 +41,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Admin Routes
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    // Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     
     // Product Management
     Route::resource('products', ProductController::class);
@@ -51,6 +51,15 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/orders/{order}/approve', [AdminController::class, 'approveOrder'])->name('admin.orders.approve');
     Route::post('/orders/{order}/decline', [AdminController::class, 'declineOrder'])->name('admin.orders.decline');
 });
+
+
+//Admin Login Info
+Route::controller(AdminController::class)->group(function () {
+    Route::get('/admin/login', 'adminLogin')->name('admin.login');
+    Route::get('/admin/dashboard', 'adminDashboard')->name('admin.dashboard');
+    Route::get('admin/logout', 'adminLogout')->name('admin.logout'); 
+    Route::post('/login', 'login')->name('admin.login.submit');
+}); 
 
 // Customer Routes
 Route::middleware(['auth'])->group(function () {

@@ -34,28 +34,32 @@
                                     @if($order->status == 'pending') bg-warning
                                     @elseif($order->status == 'processing') bg-info
                                     @elseif($order->status == 'completed') bg-success
+                                    @elseif($order->status == 'approved') bg-success
                                     @elseif($order->status == 'declined') bg-danger
                                     @endif">
-                                    {{ ucfirst($order->status) }}
+                                   {{ ucfirst($order->status) }}
                                 </span>
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="#" class="btn btn-info" data-bs-toggle="modal" 
+                                    <a href="#" class="btn btn-info text-warning" data-bs-toggle="modal" 
                                        data-bs-target="#orderModal{{ $order->id }}">
                                         <i class="fas fa-eye"></i>
+                                        View
                                     </a>
                                     @if($order->status == 'pending')
                                     <form action="{{ route('admin.orders.approve', $order) }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn btn-success">
+                                        <button type="submit" class="btn btn-primary">
                                             <i class="fas fa-check"></i>
+                                            Approved
                                         </button>
                                     </form>
                                     <form action="{{ route('admin.orders.decline', $order) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-danger">
-                                            <i class="fas fa-times"></i>
+                                           
+                                            Cancel
                                         </button>
                                     </form>
                                     @endif
@@ -129,7 +133,7 @@
                 </table>
             </div>
             
-            {{ $orders->links() }}
+            {{-- {{ $orders->links() }} --}}
         </div>
     </div>
 </div>

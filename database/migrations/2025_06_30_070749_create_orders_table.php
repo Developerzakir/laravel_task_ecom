@@ -15,7 +15,7 @@ return new class extends Migration
            $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('order_number')->unique();
-            $table->enum('status', ['pending', 'processing', 'completed', 'declined'])->default('pending');
+            $table->enum('status', ['pending', 'processing', 'completed', 'declined','approved'])->default('pending');
             $table->decimal('total_amount', 10, 2);
             $table->integer('item_count');
             $table->boolean('is_paid')->default(false);
