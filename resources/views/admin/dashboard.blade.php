@@ -14,6 +14,25 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-success text-white">
+                    <i class="fas fa-tags me-2"></i> Categories
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{{ route('categories.create') }}" class="btn btn-success">
+                            <i class="fas fa-plus-circle me-2"></i> Add New Category
+                        </a>
+                        <a href="{{ route('categories.index') }}" class="btn btn-outline-success">
+                            <i class="fas fa-list me-2"></i> View Categories
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         
         <div class="col-md-4">
             <div class="card">
