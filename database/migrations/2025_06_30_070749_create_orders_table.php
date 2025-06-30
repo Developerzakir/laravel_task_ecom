@@ -20,12 +20,6 @@ return new class extends Migration
             $table->integer('item_count');
             $table->boolean('is_paid')->default(false);
             $table->enum('payment_method', ['cash_on_delivery', 'paypal', 'stripe', 'card'])->nullable();
-            $table->string('shipping_full_name');
-            $table->string('shipping_address');
-            $table->string('shipping_city');
-            $table->string('shipping_state')->nullable();
-            $table->string('shipping_zip_code');
-            $table->string('shipping_phone');
             $table->text('notes')->nullable();
             $table->timestamps();
         });
